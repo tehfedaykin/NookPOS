@@ -1,0 +1,18 @@
+<h3>Personal Information</h3>
+<div [formGroup]="parentForm" class="nested-form">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input name="firstName" formControlName="firstName" />
+  </div>
+  <div class="form-group">
+    <label for="name">Last Name</label>
+    <input name="lastName" formControlName="lastName" />
+  </div>
+  <app-address-fields></app-address-fields>
+</div>
+<div class="buttons">
+  <div></div>
+  <button [disabled]="!parentForm.controls.firstName.valid" routerLink="/new-loan/step-2">Next</button>
+</div>
+
+

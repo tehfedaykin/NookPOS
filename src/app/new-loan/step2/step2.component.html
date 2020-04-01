@@ -1,0 +1,27 @@
+<h3>Loan Type {{parentForm.controls.loanType.value.loanAmount | currency}}</h3>
+<div [formGroup]="parentForm" class="nested-form">
+  <div class="form-group" >
+    <mat-form-field>
+      <mat-label>Loan Type</mat-label>
+      <mat-select formControlName="loanType">
+        <mat-option *ngFor="let loanType of loanTypes$ | async" [value]="loanType">
+          {{loanType.type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Roof Color</mat-label>
+      <mat-select formControlName="roofColor">
+        <mat-option *ngFor="let color of roofColors" [value]="color">
+          {{color}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<div class="buttons">
+  <button routerLink="/new-loan/step-1">Previous</button>
+  <button [disabled]="!parentForm.controls.initialDeposit.valid" routerLink="/new-loan/step-3">Next</button>
+</div>

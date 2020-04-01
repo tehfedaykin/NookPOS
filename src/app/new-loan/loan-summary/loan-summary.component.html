@@ -1,0 +1,8 @@
+<h3>Loan Summary</h3>
+<div class="nested-form">
+  <pre [innerHTML]="loanSummary | prettyprint"></pre>
+</div>
+<div class="buttons">
+  <button routerLink="/new-loan/step-2">Previous</button>
+  <button [disabled]="" routerLink="/new-loan/finish">Complete Application</button>
+</div>

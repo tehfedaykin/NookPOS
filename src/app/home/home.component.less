@@ -1,51 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
-
-body {
-  margin: 0;
-  font-family: 'Arvo', serif;
-  font-size: 14px;
-  color: #333;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #6EE3F7;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 8px 0;
-}
-
-p {
-  margin: 0;
-}
-
-.form-group {
-  margin: .5em 0;
+:host {
   display: flex;
-  label {
-    margin: 0 .5em 0 0;
-    min-width: 80px;
-  }
-  input {
-    flex: 2 1 0;
-  }
+  margin: 32px auto;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+svg.material-icons {
+  height: 24px;
+  width: auto;
 }
 
-button {
-  padding: .5em 1em;
-  font-family: 'Arvo', serif;
-  background: #385B98;
-  color: #FFE46A;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 1px 3px 5px #333;
-  cursor: pointer;
+svg.material-icons:not(:last-child) {
+  margin-right: 8px;
+}
+
+.card svg.material-icons path {
+  fill: #888;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
 }
 
 .card {
@@ -98,4 +76,30 @@ button {
 
 .card.card.highlight-card span {
   margin-left: 60px;
+}
+
+svg#rocket {
+  width: 80px;
+  position: absolute;
+  left: -10px;
+  top: -24px;
+}
+
+svg#rocket-smoke {
+  height: 100vh;
+  position: absolute;
+  top: 10px;
+  right: 180px;
+  z-index: -10;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #125699;
 }
