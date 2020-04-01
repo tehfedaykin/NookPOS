@@ -3,8 +3,12 @@
   <div class="form-group" >
     <mat-form-field>
       <mat-label>Loan Type</mat-label>
-      <mat-select formControlName="loanType">
-        <mat-option *ngFor="let loanType of loanTypes$ | async" [value]="loanType">
+      <mat-select
+      formControlName="loanType"
+      [(ngModel)]="parentForm.controls.loanType.value"
+      [compareWith]="objectComparison"
+      >
+        <mat-option *ngFor="let loanType of loanTypes$ | async" [value]="loanType" >
           {{loanType.type}}
         </mat-option>
       </mat-select>

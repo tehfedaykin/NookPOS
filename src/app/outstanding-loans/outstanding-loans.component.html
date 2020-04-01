@@ -1,6 +1,6 @@
 <h1>Outstanding Loans</h1>
 <div class="loans-container">
-  <div class="card" *ngFor="let loan of outstandingLoans$ | async">
+  <div class="card" *ngFor="let loan of outstandingLoans$ | async" [ngClass]="loan.roofColor">
     <div>
       <h4>Loan Type: {{loan.loanType}}</h4>
       <p>Loanee: {{loan.firstName}} {{loan.lastName}}</p>

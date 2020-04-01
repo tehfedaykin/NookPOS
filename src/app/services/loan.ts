@@ -15,18 +15,18 @@ export enum CurrencyTypes {
 }
 
 export interface Loan {
-  firstName: string,
-  lastName: string,
-  streetNumber: number,
-  islandName: string,
-  initialDeposit: number,
+  firstName: string;
+  lastName: string;
+  streetNumber: number;
+  islandName: string;
+  initialDeposit: number;
   remainingBalance: number;
-  loanType: LoanType,
-  roofColor: string
+  loanType: string;
+  roofColor: string;
 }
 
 export interface LoanType {
-  type: string,
-  loanAmount: number,
-  loanCurrency: CurrencyTypes,
+  type: string;
+  loanAmount: number;
+  loanCurrency: CurrencyTypes;
 }

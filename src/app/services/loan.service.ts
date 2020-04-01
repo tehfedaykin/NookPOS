@@ -15,23 +15,56 @@ export class LoanService {
         id: 1,
         firstName: 'Jennifer',
         lastName: 'Wadella',
-        streetNumber: 123,
+        streetNumber: 404,
         islandName: 'coronavill',
         initialDeposit: 3000,
         remainingBalance: 95000,
         loanType: 'First Home',
-        roofColor: 'blue'
+        roofColor: 'teal'
       },
       {
         id: 2,
         firstName: 'Sandi',
         lastName: 'Barr',
         streetNumber: 466,
-        islandName: 'coronavill',
+        islandName: 'Wholesome',
         initialDeposit: 10000,
         remainingBalance: 188000,
         loanType: 'The Second Home Upgrade',
         roofColor: 'black'
+      },
+      {
+        id: 2,
+        firstName: 'Matt',
+        lastName: 'Warger',
+        streetNumber: 466,
+        islandName: 'Spacecamp',
+        initialDeposit: 10000,
+        remainingBalance: 338000,
+        loanType: 'Back Room Upgrade',
+        roofColor: 'red'
+      },
+      {
+        id: 3,
+        firstName: 'Chloe',
+        lastName: 'Condon',
+        streetNumber: 466,
+        islandName: 'Baller',
+        initialDeposit: 10000,
+        remainingBalance: 188000,
+        loanType: 'The Second Home Upgrade',
+        roofColor: 'pink'
+      },
+      {
+        id: 3,
+        firstName: 'Jan-Niklas',
+        lastName: 'Wortmann',
+        streetNumber: 202,
+        islandName: 'madagascar',
+        initialDeposit: 12000,
+        remainingBalance: 186000,
+        loanType: 'The Second Home Upgrade',
+        roofColor: 'blue'
       }
     ])
   }

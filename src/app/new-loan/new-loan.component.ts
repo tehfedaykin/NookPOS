@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-loan',
@@ -12,14 +12,14 @@ export class NewLoanComponent implements OnInit {
 
   ngOnInit() {
     this.loanApplication = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      streetNumber: new FormControl(''),
-      islandName: new FormControl(''),
-      initialDeposit: new FormControl(''),
-      loanType: new FormControl(''),
-      roofColor: new FormControl('')
-    })
+      firstName: new FormControl({value: '', disabled: false}, Validators.required),
+      lastName: new FormControl({value: '', disabled: false}, Validators.required),
+      streetNumber: new FormControl({value: '', disabled: false}, Validators.required),
+      islandName: new FormControl({value: '', disabled: false}, Validators.required),
+      initialDeposit: new FormControl({value: 0, disabled: false}, Validators.required),
+      loanType: new FormControl({value: '', disabled: false}, Validators.required),
+      roofColor: new FormControl({value: '', disabled: false}, Validators.required)
+    });
   }
 
 }

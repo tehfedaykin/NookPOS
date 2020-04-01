@@ -16,7 +16,6 @@ export class LoanSummaryComponent implements OnInit {
       ...formValue,
       balanceDue: formValue.loanType.loanAmount - formValue.initialDeposit
     }
-    console.log('loan summary', this.loanSummary, formValue);
   }
 
 }

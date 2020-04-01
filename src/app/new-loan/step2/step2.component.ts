@@ -27,8 +27,11 @@ export class Step2Component implements OnInit {
 
   ngOnInit() {
     this.parentForm = this.controlContainer.control;
-    console.log(this.loanService);
     this.loanTypes$ = this.loanService.getLoanTypes();
+  }
+
+  public objectComparison(option, value): boolean {
+    return option.type === value.type;
   }
 
 }
