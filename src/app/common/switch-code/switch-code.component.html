@@ -1,0 +1,6 @@
+<div class="full-width" [formGroup]="codeGroup" >
+  <span>SW-</span>
+  <ng-container *ngFor="let control of codeGroup.controls">
+    <input value="" pattern="[0-9]{4}" type="text" [formControl]="control" (blur)=(onTouched())>
+  </ng-container>
+</div>
