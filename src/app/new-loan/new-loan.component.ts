@@ -18,7 +18,8 @@ export class NewLoanComponent implements OnInit {
       islandName: new FormControl({value: '', disabled: false}, Validators.required),
       initialDeposit: new FormControl({value: 0, disabled: false}, Validators.required),
       loanType: new FormControl({value: '', disabled: false}, Validators.required),
-      roofColor: new FormControl({value: '', disabled: false}, Validators.required)
+      roofColor: new FormControl({value: '', disabled: false}, Validators.required),
+      friendCode: new FormControl({value: '', disabled: false})
     });
   }
 

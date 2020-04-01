@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PrettyPrintPipe } from './common/prettyprint.pipe';
 import { LoanSummaryComponent } from './new-loan/loan-summary/loan-summary.component';
 import { OutstandingLoansComponent } from './outstanding-loans/outstanding-loans.component';
+import { SwitchCodeComponent } from './common/switch-code/switch-code.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { OutstandingLoansComponent } from './outstanding-loans/outstanding-loans
     AddressFieldsComponent,
     PrettyPrintPipe,
     LoanSummaryComponent,
-    OutstandingLoansComponent
+    OutstandingLoansComponent,
+    SwitchCodeComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { OutstandingLoansComponent } from './outstanding-loans/outstanding-loans
     BrowserAnimationsModule,
     MatSliderModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
