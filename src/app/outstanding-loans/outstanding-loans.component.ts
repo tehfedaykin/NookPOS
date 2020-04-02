@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { LoanService } from '../services/loan.service';
 import { Observable } from 'rxjs';
 import { Loan } from '../services/loan';
+import { OutstandingLoanQuery } from '../services/loanQuery.service';
+import { map } from 'rxjs/operators';
+import { OutstandingLoanModel } from '../models/OutstandingLoanModel';
 
 @Component({
   selector: 'app-outstanding-loans',
@@ -9,10 +12,19 @@ import { Loan } from '../services/loan';
   styleUrls: ['./outstanding-loans.component.less']
 })
 export class OutstandingLoansComponent implements OnInit {
-  public outstandingLoans$: Observable<Loan[]> = this.loanService.getOutstandingLoans();
-  constructor(private loanService: LoanService) { }
+  // public outstandingLoans$: Observable<Loan[]> = this.loanService.getOutstandingLoans();
+  // constructor(private loanService: LoanService) { }
 
-  ngOnInit() {
-  }
+  // graphql api
+  public outstandingLoans$: Observable<
+    OutstandingLoanModel[]
+  > = this.loanService.watch().valueChanges.pipe(
+    map(({ data }) => {
+      // console.log('data', data);
+      return data.outstanding_loans;
+    })
+  );
+  constructor(private readonly loanService: OutstandingLoanQuery) {}
 
+  ngOnInit() {}
 }

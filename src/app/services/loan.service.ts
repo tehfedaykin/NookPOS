@@ -6,8 +6,7 @@ import { CurrencyTypes, Loan, LoanType } from './loan';
   providedIn: 'root'
 })
 export class LoanService {
-
-  constructor() { }
+  constructor() {}
 
   public getOutstandingLoans() {
     return of([
@@ -35,7 +34,7 @@ export class LoanService {
       },
       {
         id: 2,
-        firstName: 'Matt',
+        firstName: 'Mat',
         lastName: 'Warger',
         streetNumber: 466,
         islandName: 'Spacecamp',
@@ -66,7 +65,7 @@ export class LoanService {
         loanType: 'The Second Home Upgrade',
         roofColor: 'blue'
       }
-    ])
+    ]);
   }
 
   public getLoanTypes(): Observable<LoanType[]> {
@@ -111,7 +110,6 @@ export class LoanService {
         loanAmount: 2498000,
         loanCurrency: CurrencyTypes.Bells
       }
-    ])
+    ]);
   }
-
 }

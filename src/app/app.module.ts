@@ -20,6 +20,14 @@ import { LoanSummaryComponent } from './new-loan/loan-summary/loan-summary.compo
 import { OutstandingLoansComponent } from './outstanding-loans/outstanding-loans.component';
 import { SwitchCodeComponent } from './common/switch-code/switch-code.component';
 
+import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpClientModule } from '@angular/common/http';
+import { ApolloClient } from 'apollo-client';
+import { OutstandingLoanQuery } from './services/loanQuery.service';
+import { CreateLoanMutation } from './services/loanMutation.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,9 +50,30 @@ import { SwitchCodeComponent } from './common/switch-code/switch-code.component'
     MatSliderModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule,
+    ApolloModule,
+    HttpLinkModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory: httpLink => {
+        return new ApolloClient({
+          cache: new InMemoryCache(),
+          link: httpLink.create({
+            uri: 'https://tom-nook-pos.herokuapp.com/v1/graphql'
+            // headers: {
+            //   'x-hasura-admin-secret': `tomnookisacrook`
+            // }
+          })
+        });
+      },
+      deps: [HttpLink]
+    },
+    OutstandingLoanQuery,
+    CreateLoanMutation
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
