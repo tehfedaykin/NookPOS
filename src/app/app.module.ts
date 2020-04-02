@@ -29,6 +29,7 @@ import { ApolloClient } from 'apollo-client';
 import { OutstandingLoanQuery } from './services/loanQuery.service';
 import { CreateLoanMutation } from './services/loanMutation.service';
 import { ConfirmDialogComponent } from './common/confirm-dialog/confirm-dialog.component';
+import { DeleteLoanMutation } from './services/loanDelete.service';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ConfirmDialogComponent } from './common/confirm-dialog/confirm-dialog.c
       deps: [HttpLink]
     },
     OutstandingLoanQuery,
-    CreateLoanMutation
+    CreateLoanMutation,
+    DeleteLoanMutation
   ],
   bootstrap: [AppComponent]
 })

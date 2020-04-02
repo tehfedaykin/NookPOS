@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { OutstandingLoanModel } from '../models/OutstandingLoanModel';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../common/confirm-dialog/confirm-dialog.component';
+import { DeleteLoanMutation } from '../services/loanDelete.service';
 
 @Component({
   selector: 'app-outstanding-loans',
@@ -26,7 +27,10 @@ export class OutstandingLoansComponent implements OnInit {
       return data.outstanding_loans;
     })
   );
-  constructor(private readonly loanService: OutstandingLoanQuery, public dialog: MatDialog) {}
+  constructor(
+    private readonly loanService: OutstandingLoanQuery,
+    public dialog: MatDialog,
+    private deleteLoanMutation: DeleteLoanMutation) {}
 
   ngOnInit() {}
 
@@ -43,6 +47,21 @@ export class OutstandingLoansComponent implements OnInit {
   }
 
   deleteLoan(loanId) {
-    console.log('deleteing loan', loanId)
+    console.log('deleteing loan', loanId);
+    this.deleteLoanMutation
+      .mutate({
+        id: loanId
+      })
+      .subscribe(
+        ({
+          data: {
+            delete_outstanding_loans: {
+              returning: { id, firstName, lastName }
+            }
+          }
+        }) => {
+          console.log(`${firstName}'s loan deleted!`);
+        }
+      );
   }
 }
