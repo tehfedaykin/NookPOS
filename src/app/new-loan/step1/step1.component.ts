@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlContainer, FormGroupDirective } from '@angular/forms';
+import { ControlContainer } from '@angular/forms';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-step1',
@@ -12,6 +13,9 @@ export class Step1Component implements OnInit {
   }
 
   ngOnInit() {
-    this.canProgress = this.controlContainer.control.get('firstName').valid
+    this.canProgress = this.controlContainer.control.get('firstName').statusChanges.pipe(
+      startWith(this.controlContainer.control.get('firstName').valid),
+      map((status) => status === 'VALID')
+    );
   }
 }

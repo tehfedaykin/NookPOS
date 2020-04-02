@@ -23,6 +23,7 @@ export interface Loan {
   remainingBalance: number;
   loanType: string;
   roofColor: string;
+  friendCode?: string;
 }
 
 export interface LoanType {

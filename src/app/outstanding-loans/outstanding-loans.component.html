@@ -7,6 +7,7 @@
   >
       <h4>Loan Type: {{ loan.type }}</h4>
       <p>Loanee: {{ loan.firstName }} {{ loan.lastName }}</p>
+      <p><b>switch code: {{loan.friendCode}}</b></p>
       <p>
         <b>Balance Owed: {{ loan.remainingBalance | number: '.2' }} bells</b>
       </p>

@@ -20,7 +20,7 @@
   <app-address-fields></app-address-fields>
   <div class="buttons">
     <div></div>
-    <button [disabled]="!canProgress" routerLink="/new-loan/step-2">Next</button>
+    <button [disabled]="!(canProgress | async)" routerLink="/new-loan/step-2">Next</button>
   </div>
 </div>
 
