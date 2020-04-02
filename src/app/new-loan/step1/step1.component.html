@@ -1,5 +1,5 @@
 <h3>Personal Information</h3>
-<div [formGroup]="parentForm" class="nested-form">
+<div [formGroup]="controlContainer.control" class="nested-form">
   <div class="form-group">
     <mat-form-field>
       <mat-label for="firstName">First Name</mat-label>
@@ -15,15 +15,13 @@
   <h4>Wanna be Social? Add Your Friend code!</h4>
   <p>(Read about how to find your friend code <a target="_blank" href="https://en-americas-support.nintendo.com/app/answers/detail/a_id/22438/~/how-to-view-or-change-your-friend-code">here</a>)</p>
   <div class="form-group">
-    <!-- <label for="name">Friend Code</label>
-    <input name="friendCode" formControlName="friendCode" /> -->
     <app-switch-code formControlName="friendCode"></app-switch-code>
   </div>
   <app-address-fields></app-address-fields>
 </div>
 <div class="buttons">
   <div></div>
-  <button [disabled]="!parentForm.controls.firstName.valid" routerLink="/new-loan/step-2">Next</button>
+  <button [disabled]="!controlContainer.control.controls.firstName.valid" routerLink="/new-loan/step-2">Next</button>
 </div>
 
 
