@@ -21,7 +21,9 @@ export class OutstandingLoansComponent implements OnInit {
   > = this.loanService.watch().valueChanges.pipe(
     map(({ data }) => {
       // console.log('data', data);
-      return data.outstanding_loans;
+      return data.outstanding_loans.map(item => ({
+        ...item
+      }));
     })
   );
   constructor(private readonly loanService: OutstandingLoanQuery) {}

@@ -18,7 +18,7 @@ export class OutstandingLoanQuery extends Query<OutstandingLoanResponse> {
         initialDeposit
         islandName
         lastName
-        loanType
+        type
         remainingBalance
         roofColor
         streetNumber
