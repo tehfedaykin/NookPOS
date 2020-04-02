@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlContainer } from '@angular/forms';
 import { CreateLoanMutation } from 'src/app/services/loanMutation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loan-summary',
@@ -11,7 +12,8 @@ export class LoanSummaryComponent implements OnInit {
   public loanSummary;
   constructor(
     private controlContainer: ControlContainer,
-    private readonly createLoanMutation: CreateLoanMutation
+    private readonly createLoanMutation: CreateLoanMutation,
+    private route: Router
   ) {}
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class LoanSummaryComponent implements OnInit {
           }
         }) => {
           this.loanSummary = { id, ...this.loanSummary };
+          this.route.navigate(['/new-loan/application-complete']);
         }
       );
   }

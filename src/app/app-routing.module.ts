@@ -7,6 +7,7 @@ import { Step2Component } from './new-loan/step2/step2.component';
 import { Step3Component } from './new-loan/step3/step3.component';
 import { LoanSummaryComponent } from './new-loan/loan-summary/loan-summary.component';
 import { OutstandingLoansComponent } from './outstanding-loans/outstanding-loans.component';
+import { ApplicationCompleteComponent } from './new-loan/application-complete/application-complete.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'loan-summary',
         component: LoanSummaryComponent
+      },
+      {
+        path: 'application-complete',
+        component: ApplicationCompleteComponent
       }
     ] },
 ];
