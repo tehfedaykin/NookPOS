@@ -27,6 +27,7 @@ export class LoanSummaryComponent implements OnInit {
     // I don't know how to do that though
     this.createLoanMutation
       .mutate({
+        // this is Mat flattening your data model to fit in the one table
         loan: {
           ...details,
           ...loanType
