@@ -5,12 +5,15 @@
     *ngFor="let loan of outstandingLoans$ | async"
     [ngClass]="loan.roofColor"
   >
-      <h4>Loan Type: {{ loan.type }}</h4>
-      <p>Loanee: {{ loan.firstName }} {{ loan.lastName }}</p>
-      <p><b>switch code: {{loan.friendCode}}</b></p>
-      <p>
-        <b>Balance Owed: {{ loan.remainingBalance | number: '.2' }} bells</b>
-      </p>
+      <div class="switch-code" *ngIf="loan.friendCode"><b>switch code:</b> {{loan.friendCode}}</div>
+      <div>
+        <h4>Loan Type: {{ loan.type }}</h4>
+        <p>Loanee: {{ loan.firstName }} {{ loan.lastName }}</p>
+        <p>
+          <b>Balance Owed: {{ loan.remainingBalance | number: '.2' }} bells</b>
+        </p>
+      </div>
+
       <button class="delete-loan" (click)="openConfirmationDialog(loan.id)">Delete loan</button>
   </div>
 </div>
