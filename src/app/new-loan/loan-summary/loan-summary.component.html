@@ -4,5 +4,5 @@
 </div>
 <div class="buttons">
   <button routerLink="/new-loan/step-3">Previous</button>
-  <button [disabled]="" routerLink="/new-loan/finish">Complete Application</button>
+  <button [disabled]="" (click)="submitApplication()">Complete Application</button>
 </div>

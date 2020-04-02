@@ -16,12 +16,14 @@ export class LoanSummaryComponent implements OnInit {
 
   ngOnInit() {
     const formValue = this.controlContainer.control.value;
-    const loanDetails = {
+    this.loanSummary = {
       ...formValue,
       remainingBalance: formValue.loanType.loanAmount - formValue.initialDeposit
     };
+  }
 
-    const { loanType, ...details } = loanDetails;
+  submitApplication() {
+    const { loanType, ...details } = this.loanSummary;
 
     // TODO: might want to move this to a button submit
     // I don't know how to do that though
@@ -41,7 +43,7 @@ export class LoanSummaryComponent implements OnInit {
             }
           }
         }) => {
-          this.loanSummary = { id, ...loanDetails };
+          this.loanSummary = { id, ...this.loanSummary };
         }
       );
   }

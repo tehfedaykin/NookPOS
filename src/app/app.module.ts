@@ -5,6 +5,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApolloClient } from 'apollo-client';
 import { OutstandingLoanQuery } from './services/loanQuery.service';
 import { CreateLoanMutation } from './services/loanMutation.service';
+import { ConfirmDialogComponent } from './common/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { CreateLoanMutation } from './services/loanMutation.service';
     PrettyPrintPipe,
     LoanSummaryComponent,
     OutstandingLoansComponent,
-    SwitchCodeComponent
+    SwitchCodeComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { CreateLoanMutation } from './services/loanMutation.service';
     MatInputModule,
     HttpClientModule,
     ApolloModule,
-    HttpLinkModule
+    HttpLinkModule,
+    MatDialogModule
   ],
   providers: [
     {
