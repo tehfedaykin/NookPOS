@@ -7,10 +7,11 @@ import { ControlContainer, FormGroupDirective } from '@angular/forms';
   styleUrls: ['./step1.component.less'],
 })
 export class Step1Component implements OnInit {
-  constructor(private controlContainer: ControlContainer) {
+  public canProgress;
+  constructor(public controlContainer: ControlContainer) {
   }
 
   ngOnInit() {
+    this.canProgress = this.controlContainer.control.get('firstName').valid
   }
-
 }

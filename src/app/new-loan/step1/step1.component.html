@@ -18,10 +18,11 @@
     <app-switch-code formControlName="friendCode"></app-switch-code>
   </div>
   <app-address-fields></app-address-fields>
+  <div class="buttons">
+    <div></div>
+    <button [disabled]="!canProgress" routerLink="/new-loan/step-2">Next</button>
+  </div>
 </div>
-<div class="buttons">
-  <div></div>
-  <button [disabled]="!controlContainer.control.controls.firstName.valid" routerLink="/new-loan/step-2">Next</button>
-</div>
+
 
 
