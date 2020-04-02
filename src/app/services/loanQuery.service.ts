@@ -22,6 +22,7 @@ export class OutstandingLoanQuery extends Query<OutstandingLoanResponse> {
         remainingBalance
         roofColor
         streetNumber
+        friendCode
       }
     }
   `;
