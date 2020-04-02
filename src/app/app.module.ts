@@ -26,6 +26,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpClientModule } from '@angular/common/http';
 import { ApolloClient } from 'apollo-client';
 import { OutstandingLoanQuery } from './services/loanQuery.service';
+import { CreateLoanMutation } from './services/loanMutation.service';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { OutstandingLoanQuery } from './services/loanQuery.service';
       },
       deps: [HttpLink]
     },
-    OutstandingLoanQuery
+    OutstandingLoanQuery,
+    CreateLoanMutation
   ],
   bootstrap: [AppComponent]
 })

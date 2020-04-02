@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Loan } from '../services/loan';
 import { OutstandingLoanQuery } from '../services/loanQuery.service';
 import { map } from 'rxjs/operators';
+import { OutstandingLoanModel } from '../models/OutstandingLoanModel';
 
 @Component({
   selector: 'app-outstanding-loans',
@@ -16,7 +17,7 @@ export class OutstandingLoansComponent implements OnInit {
 
   // graphql api
   public outstandingLoans$: Observable<
-    Loan[]
+    OutstandingLoanModel[]
   > = this.loanService.watch().valueChanges.pipe(
     map(({ data }) => {
       // console.log('data', data);

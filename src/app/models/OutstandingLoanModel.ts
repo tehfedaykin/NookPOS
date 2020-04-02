@@ -6,6 +6,9 @@ export interface OutstandingLoanModel {
   islandName: string;
   initialDeposit: number;
   remainingBalance: number;
-  loanType: string;
+  type: string;
   roofColor: string;
+  balanceDue: number;
+  loanCurrency: string;
+  friendCode?: string;
 }
