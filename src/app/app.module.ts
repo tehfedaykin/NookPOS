@@ -30,6 +30,7 @@ import { OutstandingLoanQuery } from './services/loanQuery.service';
 import { CreateLoanMutation } from './services/loanMutation.service';
 import { ConfirmDialogComponent } from './common/confirm-dialog/confirm-dialog.component';
 import { DeleteLoanMutation } from './services/loanDelete.service';
+import { ApplicationCompleteComponent } from './new-loan/application-complete/application-complete.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DeleteLoanMutation } from './services/loanDelete.service';
     LoanSummaryComponent,
     OutstandingLoansComponent,
     SwitchCodeComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ApplicationCompleteComponent
   ],
   imports: [
     BrowserModule,
