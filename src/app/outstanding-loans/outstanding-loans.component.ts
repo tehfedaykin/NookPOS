@@ -38,11 +38,11 @@ export class OutstandingLoansComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
-      //this.deleteLoan(result);
+      this.deleteLoan(result);
     });
   }
 
-  deleteLoan(loadId) {
-
+  deleteLoan(loanId) {
+    console.log('deleteing loan', loanId)
   }
 }

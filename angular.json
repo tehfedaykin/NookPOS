@@ -32,7 +32,6 @@
               "src/styles.less"
             ],
             "scripts": [
-              "./node_modules/hammerjs/hammer.min.js"
             ]
           },
           "configurations": {
