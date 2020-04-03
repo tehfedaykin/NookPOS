@@ -31,6 +31,7 @@ import { CreateLoanMutation } from './services/loanMutation.service';
 import { ConfirmDialogComponent } from './common/confirm-dialog/confirm-dialog.component';
 import { DeleteLoanMutation } from './services/loanDelete.service';
 import { ApplicationCompleteComponent } from './new-loan/application-complete/application-complete.component';
+import { NotificationDialogComponent } from './common/notification-dialog/notification-dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ApplicationCompleteComponent } from './new-loan/application-complete/ap
     OutstandingLoansComponent,
     SwitchCodeComponent,
     ConfirmDialogComponent,
-    ApplicationCompleteComponent
+    ApplicationCompleteComponent,
+    NotificationDialogComponent
   ],
   imports: [
     BrowserModule,

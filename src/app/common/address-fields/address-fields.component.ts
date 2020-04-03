@@ -8,8 +8,6 @@ import { ControlContainer, FormGroupDirective } from '@angular/forms';
   viewProviders: [ { provide: ControlContainer, useExisting: FormGroupDirective } ]
 })
 export class AddressFieldsComponent implements OnInit {
-  public addressFormGroup;
-
   constructor() { }
 
   ngOnInit() {

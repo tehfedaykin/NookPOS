@@ -19,7 +19,7 @@ const routes: Routes = [
     children: [
       {
         path: 'step-1',
-        component: Step1Component
+        component: Step1Component,
       },
       {
         path: 'step-2',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ControlContainer } from '@angular/forms';
-import { startWith, map } from 'rxjs/operators';
+import { ControlContainer, FormGroup } from '@angular/forms';
+import { UtilityService } from 'src/app/common/utility.service';
 
 @Component({
   selector: 'app-step1',
@@ -9,13 +9,13 @@ import { startWith, map } from 'rxjs/operators';
 })
 export class Step1Component implements OnInit {
   public canProgress;
-  constructor(public controlContainer: ControlContainer) {
+  constructor(public controlContainer: ControlContainer, private utilityService: UtilityService) {
   }
 
   ngOnInit() {
-    this.canProgress = this.controlContainer.control.get('firstName').statusChanges.pipe(
-      startWith(this.controlContainer.control.get('firstName').valid),
-      map((status) => status === 'VALID')
-    );
+    const formGroup = this.controlContainer.control as FormGroup;
+    const controls = ['firstName', 'lastName', 'streetNumber', 'islandName'];
+
+    this.canProgress = this.utilityService.getValidityofControls(formGroup, controls);
   }
 }

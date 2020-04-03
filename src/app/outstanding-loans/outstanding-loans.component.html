@@ -1,10 +1,10 @@
+<div class="timmy-tommy">
+  <img src="../../assets/img/Timmy_&_Tommy_NH.png" alt="Timmy & Tommy">
+</div>
 <h1>Outstanding Loans</h1>
 <div class="loans-container">
-  <div
-    class="card"
-    *ngFor="let loan of outstandingLoans$ | async"
-    [ngClass]="loan.roofColor"
-  >
+  <ng-container *ngFor="let loan of outstandingLoans$ | async">
+    <div class="card" [ngClass]="loan.roofColor">
       <div class="switch-code" *ngIf="loan.friendCode"><b>switch code:</b> {{loan.friendCode}}</div>
       <div>
         <h4>Loan Type: {{ loan.type }}</h4>
@@ -13,7 +13,8 @@
           <b>Balance Owed: {{ loan.remainingBalance | number: '.2' }} bells</b>
         </p>
       </div>
-
       <button class="delete-loan" (click)="openConfirmationDialog(loan.id)">Delete loan</button>
-  </div>
+    </div>
+  </ng-container>
 </div>
+

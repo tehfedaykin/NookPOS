@@ -5,6 +5,9 @@
 .full-width {
   flex: 1 1 0;
   display: flex;
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
   .mat-form-field-wrapper {
     flex: 1 1 0;
   }
@@ -16,5 +19,6 @@
     flex: 1 1 0;
     padding: .4375em 0;
     margin-right: 1em;
+    max-width: 80px;
   }
 }

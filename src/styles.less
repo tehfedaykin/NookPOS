@@ -52,6 +52,13 @@ button {
   border-radius: 3px;
   box-shadow: 1px 3px 5px #333;
   cursor: pointer;
+  &:disabled {
+    background: #cccccc;
+    color: #333;
+    box-shadow: none;
+    text-shadow: -1px 1px 1px #fff;
+    cursor: none;
+  }
 }
 
 .card {

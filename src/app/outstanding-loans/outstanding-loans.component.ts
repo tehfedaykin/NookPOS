@@ -1,13 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { LoanService } from '../services/loan.service';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Loan } from '../services/loan';
 import { OutstandingLoanQuery } from '../services/loanQuery.service';
 import { map } from 'rxjs/operators';
 import { OutstandingLoanModel } from '../models/OutstandingLoanModel';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../common/confirm-dialog/confirm-dialog.component';
 import { DeleteLoanMutation } from '../services/loanDelete.service';
+import { NotificationDialogComponent } from '../common/notification-dialog/notification-dialog.component';
 
 @Component({
   selector: 'app-outstanding-loans',
@@ -15,15 +14,11 @@ import { DeleteLoanMutation } from '../services/loanDelete.service';
   styleUrls: ['./outstanding-loans.component.less']
 })
 export class OutstandingLoansComponent implements OnInit {
-  // public outstandingLoans$: Observable<Loan[]> = this.loanService.getOutstandingLoans();
-  // constructor(private loanService: LoanService) { }
-
   // graphql api
   public outstandingLoans$: Observable<
     OutstandingLoanModel[]
   > = this.loanService.watch().valueChanges.pipe(
     map(({ data }) => {
-      // console.log('data', data);
       return data.outstanding_loans;
     })
   );
@@ -32,7 +27,8 @@ export class OutstandingLoansComponent implements OnInit {
     public dialog: MatDialog,
     private deleteLoanMutation: DeleteLoanMutation) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   openConfirmationDialog(loanId) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
@@ -41,13 +37,11 @@ export class OutstandingLoansComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
       this.deleteLoan(result);
     });
   }
 
   deleteLoan(loanId) {
-    console.log('deleteing loan', loanId);
     this.deleteLoanMutation
       .mutate({
         id: loanId
@@ -60,7 +54,16 @@ export class OutstandingLoansComponent implements OnInit {
             }
           }
         }) => {
-          console.log(`${firstName}'s loan deleted!`);
+          this.dialog.open(NotificationDialogComponent, {
+            width: '250px',
+            data: {message: `${firstName}'s Loan Deleted`}
+          });
+
+          this.loanService.fetch().pipe(
+            map(({ data }) => {
+              return data.outstanding_loans;
+            })
+          )
         }
       );
   }

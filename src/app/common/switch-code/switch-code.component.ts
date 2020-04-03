@@ -1,5 +1,5 @@
 import { Component, forwardRef, OnInit, OnDestroy } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, Validators, FormArray } from '@angular/forms';
 import { takeWhile } from 'rxjs/operators';
 
 @Component({
@@ -34,7 +34,7 @@ export class SwitchCodeComponent implements OnInit, OnDestroy, ControlValueAcces
       for (let idx = 0; idx < code.length; idx++) {
         const formControl = this.codeGroup.controls[idx];
         const codeChunk = code[idx+1];
-        if(formControl && codeChunk) {
+        if (formControl && codeChunk) {
           formControl.setValue(codeChunk);
         }
       }
@@ -42,14 +42,15 @@ export class SwitchCodeComponent implements OnInit, OnDestroy, ControlValueAcces
   }
 
   ngOnInit() {
-    this.codeGroup.controls.map((formControl) => {
+    const switchFormControls = this.codeGroup.controls
+    switchFormControls.map((formControl) => {
       formControl.valueChanges.pipe(
         takeWhile(() => this.isAlive)
       ).subscribe((val) => {
         if (val.length > 4) {
           formControl.setValue(val.substring(0, 4), {
             emitEvent: false
-          })
+          });
         }
       })
     });

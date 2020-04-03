@@ -1,44 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  ControlContainer,
-  FormGroup,
-  FormGroupDirective,
-  NgForm
+  ControlContainer
 } from '@angular/forms';
 import { BehaviorSubject, Observable, combineLatest } from 'rxjs';
-import { map, switchMap, tap, withLatestFrom, startWith } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { LoanType } from 'src/app/services/loan';
-import { CreateLoanMutation } from 'src/app/services/loanMutation.service';
 
 @Component({
   selector: 'app-step3',
   templateUrl: './step3.component.html',
   styleUrls: ['./step3.component.less'],
-  viewProviders: [
-    { provide: ControlContainer, useExisting: FormGroupDirective }
-  ]
 })
 export class Step3Component implements OnInit {
-  public sliderValue$: BehaviorSubject<number> = new BehaviorSubject(0);
+  public sliderValue: BehaviorSubject<number> = new BehaviorSubject(0);
   public remainingBalance$: Observable<number>;
   public loanType$: Observable<LoanType>;
+  public formGroup;
 
   constructor(public controlContainer: ControlContainer) {}
 
   ngOnInit() {
-    this.loanType$ = this.controlContainer.control
-      .get('loanType')
-      .valueChanges.pipe(
-        startWith(this.controlContainer.control.get('loanType').value)
-      );
+    this.formGroup = this.controlContainer.control;
+    const loanControl = this.controlContainer.control.get('loanType')
+    this.loanType$ = loanControl.valueChanges.pipe(
+      startWith(loanControl.value)
+    );
 
-    this.remainingBalance$ = combineLatest(
-      this.sliderValue$,
+    this.remainingBalance$ = combineLatest([
+      this.sliderValue,
       this.loanType$
-    ).pipe(
-      map(([sliderVal, loanTypeVal]) => {
-        return loanTypeVal.loanAmount - sliderVal;
-      })
+    ]).pipe(
+      map(([sliderVal, loanTypeVal]) => loanTypeVal.loanAmount - sliderVal)
     );
   }
 }

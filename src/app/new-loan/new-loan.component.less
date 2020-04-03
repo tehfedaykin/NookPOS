@@ -1,11 +1,13 @@
 :host {
   display: flex;
   flex-direction: row;
-
+  @media (max-width: 480px) {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
   .loan-container {
     display: flex;
     flex-direction: column;
-    margin-right: 1em;
   }
 
   .loan-form {
@@ -19,5 +21,11 @@
     flex: 2 1 0;
     display: flex;
     flex-direction: column;
+  }
+}
+
+.isabelle {
+  @media (max-width: 480px) {
+    width: 200px;
   }
 }

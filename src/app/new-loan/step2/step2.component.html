@@ -1,11 +1,11 @@
-<h3>Loan Type {{parentForm.controls.loanType.value.loanAmount | currency}}</h3>
-<div [formGroup]="parentForm" class="nested-form">
+<h3>Loan Type {{formGroup.controls.loanType.value.loanAmount | currency}}</h3>
+<div [formGroup]="formGroup" class="nested-form">
   <div class="form-group" >
     <mat-form-field>
       <mat-label>Loan Type</mat-label>
       <mat-select
       formControlName="loanType"
-      [(ngModel)]="parentForm.controls.loanType.value"
+      [(ngModel)]="formGroup.controls.loanType.value"
       [compareWith]="objectComparison"
       >
         <mat-option *ngFor="let loanType of loanTypes$ | async" [value]="loanType" >
@@ -27,5 +27,5 @@
 </div>
 <div class="buttons">
   <button routerLink="/new-loan/step-1">Previous</button>
-  <button [disabled]="!parentForm.controls.initialDeposit.valid" routerLink="/new-loan/step-3">Next</button>
+  <button [disabled]="!(canProgress | async)" routerLink="/new-loan/step-3">Next</button>
 </div>
